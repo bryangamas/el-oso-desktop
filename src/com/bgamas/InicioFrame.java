@@ -30,6 +30,25 @@ public class InicioFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InicioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
+        }
+        java.awt.EventQueue.invokeLater(() -> new InicioFrame().setVisible(true));
+    }
+
     public void iniciar(int n) {
         new TurnoFrame(n).setVisible(true);
         dispose();
@@ -108,24 +127,5 @@ public class InicioFrame extends JFrame {
     private void btn10x10ActionPerformed() {// GEN-FIRST:event_btn10x10ActionPerformed
         iniciar(10);
     }// GEN-LAST:event_btn10x10ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        }
-        java.awt.EventQueue.invokeLater(() -> new InicioFrame().setVisible(true));
-    }
 
 }
